@@ -1,10 +1,8 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr, field_validator
-from motor.motor_asyncio import AsyncIOMotorClient
 from datetime import datetime, timezone
-from typing import Optional, Annotated
-from bson import ObjectId
+from typing import Optional
 import os
 from dotenv import load_dotenv
 
@@ -20,11 +18,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# MongoDB — optioneel. Als niet ingesteld, werkt de site als demo.
 MONGO_URL = os.environ.get("MONGO_URL")
-DB_NAME = os.environ.get("DB_NAME")
+DB_NAME = os.environ.get("DB_NAME", "yus_klussenbedrijf")
+db = None
 
-client = AsyncIOMotorClient(MONGO_URL)
-db = client[DB_NAME]
+if MONGO_URL:
+    try:
+        from motor.motor_asyncio import AsyncIOMotorClient
+        _client = AsyncIOMotorClient(MONGO_URL)
+        db = _client[DB_NAME]
+    except Exception:
+        db = None
 
 
 class OfferteRequest(BaseModel):
@@ -82,7 +87,11 @@ class ContactRequest(BaseModel):
 
 @app.get("/api/health")
 async def health():
-    return {"status": "ok", "service": "Yus Klussenbedrijf API"}
+    return {
+        "status": "ok",
+        "service": "Yus Klussenbedrijf API",
+        "database": "connected" if db is not None else "demo-mode"
+    }
 
 
 @app.post("/api/offerte")
@@ -90,18 +99,26 @@ async def submit_offerte(data: OfferteRequest):
     if data.honeypot:
         return {"success": True, "message": "Uw aanvraag is ontvangen."}
 
-    doc = {
-        "naam": data.naam,
-        "email": data.email,
-        "telefoon": data.telefoon,
-        "adres": data.adres,
-        "dienst": data.dienst,
-        "omschrijving": data.omschrijving,
-        "created_at": datetime.now(timezone.utc),
-        "status": "nieuw",
+    if db is not None:
+        try:
+            doc = {
+                "naam": data.naam,
+                "email": data.email,
+                "telefoon": data.telefoon,
+                "adres": data.adres,
+                "dienst": data.dienst,
+                "omschrijving": data.omschrijving,
+                "created_at": datetime.now(timezone.utc),
+                "status": "nieuw",
+            }
+            await db.offerte_requests.insert_one(doc)
+        except Exception:
+            pass  # Demo mode: form werkt, opslaan mislukt stil
+
+    return {
+        "success": True,
+        "message": "Uw offerte aanvraag is succesvol ontvangen. Wij nemen binnen 24 uur contact met u op."
     }
-    await db.offerte_requests.insert_one(doc)
-    return {"success": True, "message": "Uw offerte aanvraag is succesvol ontvangen. Wij nemen binnen 24 uur contact met u op."}
 
 
 @app.post("/api/contact")
@@ -109,12 +126,20 @@ async def submit_contact(data: ContactRequest):
     if data.honeypot:
         return {"success": True, "message": "Bericht ontvangen."}
 
-    doc = {
-        "naam": data.naam,
-        "email": data.email,
-        "bericht": data.bericht,
-        "created_at": datetime.now(timezone.utc),
-        "status": "nieuw",
+    if db is not None:
+        try:
+            doc = {
+                "naam": data.naam,
+                "email": data.email,
+                "bericht": data.bericht,
+                "created_at": datetime.now(timezone.utc),
+                "status": "nieuw",
+            }
+            await db.contact_messages.insert_one(doc)
+        except Exception:
+            pass  # Demo mode: form werkt, opslaan mislukt stil
+
+    return {
+        "success": True,
+        "message": "Uw bericht is ontvangen. Wij nemen zo spoedig mogelijk contact met u op."
     }
-    await db.contact_messages.insert_one(doc)
-    return {"success": True, "message": "Uw bericht is ontvangen. Wij nemen zo spoedig mogelijk contact met u op."}

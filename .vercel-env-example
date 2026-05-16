@@ -1,0 +1,10 @@
+# Vercel Environment Variables — Yus Klussenbedrijf
+# Bu değerleri Vercel Dashboard > Settings > Environment Variables'a ekle
+
+# ZORUNLU (her zaman)
+REACT_APP_BACKEND_URL=https://yusklussenbedrijf3.vercel.app
+
+# OPSIYONEL — sadece formların MongoDB'ye kaydedilmesi gerekiyorsa ekle
+# Önizleme için gerek yok. Formlar yine de çalışır (kaydetmez ama başarı gösterir).
+# MONGO_URL=mongodb+srv://gebruiker:wachtwoord@cluster.mongodb.net/
+# DB_NAME=yus_klussenbedrijf
