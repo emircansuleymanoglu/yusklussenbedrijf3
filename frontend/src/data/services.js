@@ -288,12 +288,12 @@ export const SERVICES = [
       'Afwerking: stucwerk, schilderwerk, tegels',
       'Oplevering en nazorg',
     ],
-    // Authentic GitHub renovation images
+    // Diverse renovation images - each unique and different type
     images: [
-      WK + 'woonkamer-01.webp',              // authentic: woonkamer renovatie
-      WK + 'woonkamer-24.webp',              // authentic: woonkamer afgerond
-      SS + 'stukwerk_schilderwerk-26.webp',   // authentic: renovatie detail
-      BK + 'badkamer_toilet-07.webp',         // authentic: complete verbouwing
+      WK + 'woonkamer-01.webp',              // authentic: finished living room renovation result
+      img(10),                                // authentic: new doorway & renovation in progress
+      SS + 'stukwerk_schilderwerk-26.webp',   // authentic: wall finishing detail
+      BK + 'badkamer_toilet-07.webp',         // authentic: bathroom as part of complete verbouwing
     ],
   },
 ];

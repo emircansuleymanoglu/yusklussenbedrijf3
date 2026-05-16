@@ -5,7 +5,6 @@ import { MapPin } from 'lucide-react';
 const GH = 'https://raw.githubusercontent.com/emircansuleymanoglu/yusklussenbedrijf2/main/Resimler/';
 const WEB = GH + 'Web_Gorseller/';
 const SS = WEB + 'Stukwerk_Schilderwerk/';
-const WK = WEB + 'Woonkamer/';
 const img = (n) => `${GH}image${String(n).padStart(5, '0')}.png`;
 
 const PROJECTS = [
@@ -19,11 +18,12 @@ const PROJECTS = [
   },
   {
     id: 2,
-    title: 'Stucwerk & Wandpanelen',
+    title: 'Stucwerk & Pleisterwerk',
     location: 'Den Haag',
     category: 'Stucwerk',
-    desc: 'Decoratieve wandpanelen met geïntegreerde TV-unit en glad stucwerk.',
-    image: img(1),
+    desc: 'Vers gepleisterde wanden en plafonds — strak, egaal en vakkundig afgewerkt.',
+    // GitHub: authentic stucwerk - freshly plastered white walls (Heemskerk)
+    image: SS + 'stukwerk_schilderwerk-14.webp',
   },
   {
     id: 3,
@@ -35,11 +35,12 @@ const PROJECTS = [
   },
   {
     id: 4,
-    title: 'Woonkamer Verbouwing',
+    title: 'Algemene Verbouwing',
     location: 'Utrecht',
     category: 'Verbouwing',
-    desc: 'Volledige woonkamerrenovatie: stucwerk, schilderwerk en nieuwe vloer.',
-    image: WK + 'woonkamer-01.webp',
+    desc: 'Volledige woningrenovatie van A tot Z — van slopen tot strakke eindafwerking.',
+    // Unsplash: interior renovation in progress (unique, clearly verbouwing)
+    image: 'https://images.unsplash.com/photo-1692890659047-079b769ee3e6?crop=entropy&cs=srgb&fm=jpg&w=800&q=85',
   },
   {
     id: 5,
