@@ -3,12 +3,41 @@ import {
   Zap, Droplets, UtensilsCrossed, Wrench
 } from 'lucide-react';
 
+// GitHub raw image base URLs
 const GH = 'https://raw.githubusercontent.com/emircansuleymanoglu/yusklussenbedrijf2/main/Resimler/';
 const WEB = GH + 'Web_Gorseller/';
 const BK = WEB + 'Badkamer_Toilet/';
 const SS = WEB + 'Stukwerk_Schilderwerk/';
 const WK = WEB + 'Woonkamer/';
 const img = (n) => `${GH}image${String(n).padStart(5, '0')}.png`;
+
+// Royalty-free Unsplash images (copyright-safe)
+const U = {
+  // Schilderwerk
+  paintRoom: 'https://images.unsplash.com/photo-1655665151765-98a95126ba41?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  painter1: 'https://images.unsplash.com/photo-1688372199140-cade7ae820fe?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  painter2: 'https://images.unsplash.com/photo-1688372198189-de6a51777a81?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  // Timmerwerk
+  carpenter1: 'https://images.unsplash.com/photo-1659930087003-2d64e33181f7?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  carpenter2: 'https://images.unsplash.com/photo-1547609434-b732edfee020?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  carpenter3: 'https://images.unsplash.com/photo-1544164560-adac3045edb2?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  // Vloerverwarming
+  floor1: 'https://images.unsplash.com/photo-1649083048770-82e8ffd80431?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  floor2: 'https://images.unsplash.com/photo-1614255976202-8ce52bfcb655?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  // Elektriciteit
+  electric1: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  electric2: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  electric3: 'https://images.unsplash.com/photo-1660330589693-99889d60181e?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  // Badkamer
+  bath1: 'https://images.unsplash.com/photo-1661107259637-4e1c55462428?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  bath2: 'https://images.unsplash.com/photo-1696987007764-7f8b85dd3033?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  bath3: 'https://images.unsplash.com/photo-1521783593447-5702b9bfd267?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  // Keuken
+  kitchen1: 'https://images.unsplash.com/photo-1565183928294-7063f23ce0f8?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  kitchen2: 'https://images.unsplash.com/photo-1682888813913-e13f18692019?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  kitchen3: 'https://images.unsplash.com/photo-1592506119503-c0b18879bd5a?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+  kitchen4: 'https://images.unsplash.com/photo-1609347744403-2306e8a9ae27?crop=entropy&cs=srgb&fm=jpg&w=900&q=85',
+};
 
 export const SERVICES = [
   {
@@ -21,10 +50,10 @@ export const SERVICES = [
     bg: 'bg-amber-50',
     tagline: 'Strakke muren en plafonds met vakkundig stucwerk',
     description:
-      'Professioneel stucwerk is de basis van een mooi en duurzaam interieur. Onze ervaren stukadoors zorgen voor perfecte wanden en plafonds, van glad stucwerk tot decoratieve sierpleister. Wij gebruiken uitsluitend hoogwaardige materialen en leveren altijd een strakke, egale afwerking.',
+      'Professioneel stucwerk is de basis van een mooi en duurzaam interieur. Onze ervaren stukadoors zorgen voor perfecte wanden en plafonds, van glad stucwerk tot decoratieve sierpleister en moderne wandpanelen. Wij gebruiken uitsluitend hoogwaardige materialen zoals KNAUF en leveren altijd een strakke, egale afwerking.',
     benefits: [
       'Perfecte, gladde en egale oppervlakken',
-      'Duurzame afwerking met kwaliteitsmaterialen',
+      'Duurzame afwerking met kwaliteitsmaterialen (KNAUF)',
       'Vakkundige uitvoering door ervaren stukadoors',
       'Snel en netjes uitgevoerd, minimale overlast',
     ],
@@ -35,11 +64,12 @@ export const SERVICES = [
       'Schoonmaken en nette oplevering',
       'Garantie op uitgevoerd werk',
     ],
+    // GitHub authentic project photos + stucwerk category images
     images: [
       SS + 'stukwerk_schilderwerk-08.webp',
+      img(30),  // authentic: stucwerk voorbereiding met KNAUF bags
+      img(1),   // authentic: decoratieve wandpaneel/TV-unit (stucwerk eindresultaat)
       SS + 'stukwerk_schilderwerk-13.webp',
-      SS + 'stukwerk_schilderwerk-15.webp',
-      SS + 'stukwerk_schilderwerk-16.webp',
     ],
   },
   {
@@ -52,7 +82,7 @@ export const SERVICES = [
     bg: 'bg-sky-50',
     tagline: 'Professioneel schilderwerk voor een frisse en duurzame uitstraling',
     description:
-      'Of het nu gaat om binnenschilderwerk of het opknappen van de buitenkant van uw woning — onze schilders leveren altijd topkwaliteit. Wij werken met kwalitatieve verf en materialen die lang meegaan. Van muren en plafonds tot kozijnen, deuren en gevels.',
+      'Of het nu gaat om binnenschilderwerk of het opknappen van de buitenkant van uw woning — onze schilders leveren altijd topkwaliteit. Wij werken met kwalitatieve verf en materialen die lang meegaan. Van muren en plafonds tot kozijnen, deuren en gevels. Elke klus, hoe groot of klein, wordt vakkundig afgewerkt.',
     benefits: [
       'Lange levensduur door hoogwaardige verfproducten',
       'Nauwkeurige voorbereiding voor optimaal resultaat',
@@ -66,11 +96,12 @@ export const SERVICES = [
       'Afplakken en beschermen van niet te schilderen delen',
       'Netjes opruimen na afronding',
     ],
+    // Mix: authentic GitHub schilderwerk photos + professional Unsplash
     images: [
-      SS + 'stukwerk_schilderwerk-17.webp',
-      SS + 'stukwerk_schilderwerk-19.webp',
-      SS + 'stukwerk_schilderwerk-22.webp',
-      SS + 'stukwerk_schilderwerk-25.webp',
+      U.paintRoom,       // premium: beautifully painted living room result
+      img(15),           // authentic: schilderwerk bezig in woning
+      img(25),           // authentic: vers geschilderde muren
+      U.painter1,        // professional: schilder aan het werk
     ],
   },
   {
@@ -83,9 +114,9 @@ export const SERVICES = [
     bg: 'bg-orange-50',
     tagline: 'Maatwerk timmerwerk voor elke woning en elk project',
     description:
-      'Van het plaatsen van nieuwe kozijnen en deuren tot het realiseren van op maat gemaakte kasten en interieurelementen — onze timmerlieden werken precies en vakkundig. Wij combineren ambacht met moderne technieken voor een perfect eindresultaat dat past bij uw woning.',
+      'Van het plaatsen van nieuwe kozijnen en deuren tot het realiseren van op maat gemaakte kasten, wandpanelen en interieurelementen — onze timmerlieden werken precies en vakkundig. Wij combineren ambacht met moderne technieken voor een perfect eindresultaat dat past bij uw woning en leefstijl.',
     benefits: [
-      'Volledig maatwerk naar uw wensen',
+      'Volledig maatwerk naar uw wensen en indeling',
       'Hoge precisie en vakkundige afwerking',
       'Gebruik van duurzame en kwalitatieve houtsoorten',
       'Zowel kleine als grote timmerwerkzaamheden',
@@ -94,10 +125,16 @@ export const SERVICES = [
       'Inmeten en berekening op maat',
       'Levering en plaatsing van kozijnen of deuren',
       'Kast- en meubelbouw op maat',
-      'Vloerlegwerk en plinten',
+      'Wandpanelen en decoratieve elementen',
       'Garantie op uitgevoerd timmerwerk',
     ],
-    images: [img(1), img(2), img(3), img(4)],
+    // Mix: authentic GitHub doorway photo + professional Unsplash carpentry
+    images: [
+      U.carpenter1,   // professional: carpenter hands working with wood
+      img(10),        // authentic: nieuwe kozijnen en deur geplaatst
+      img(1),         // authentic: decoratief wandpaneel als eindresultaat
+      U.carpenter2,   // professional: craftsman at work
+    ],
   },
   {
     slug: 'vloerverwarming',
@@ -109,7 +146,7 @@ export const SERVICES = [
     bg: 'bg-red-50',
     tagline: 'Comfortabel en energiezuinig verwarmen met vloerverwarming',
     description:
-      'Vloerverwarming is een duurzame en comfortabele manier om uw woning te verwarmen. Onze specialisten installeren zowel water- als elektrische vloerverwarming, passend bij uw bestaande verwarmingssysteem. Wij zorgen voor een perfecte installatie met minimale overlast.',
+      'Vloerverwarming is een duurzame en comfortabele manier om uw woning te verwarmen. Onze specialisten installeren zowel water- als elektrische vloerverwarming, passend bij uw bestaande verwarmingssysteem. Van parket en laminaat tot tegels — wij zorgen voor een perfecte installatie.',
     benefits: [
       'Gelijkmatige warmteverdeling door de hele ruimte',
       'Energiezuiniger dan traditionele radiatoren',
@@ -118,12 +155,18 @@ export const SERVICES = [
     ],
     included: [
       'Advies en opmeting van de ruimte',
-      'Levering en installatie van het vloerverwarmingssysteem',
-      'Aansluiting op bestaand of nieuw verwarmingssysteem',
-      'Inregelen en testen van het systeem',
-      'Uitleg en handleiding voor gebruik',
+      'Levering en installatie van het systeem',
+      'Aansluiting op bestaand verwarmingssysteem',
+      'Leggen van de vloer (laminaat, parket of tegels)',
+      'Inregelen en testen — uitleg en handleiding',
     ],
-    images: [img(5), img(6), img(7), img(8)],
+    // GitHub authentic floor installation + professional warm interior
+    images: [
+      img(40),      // authentic: visgraat vloer voor/na installatie (perfect!)
+      U.floor1,     // professional: modern woonkamer met warme vloer
+      U.floor2,     // professional: lichte ruimte met vloerverwarming
+      SS + 'stukwerk_schilderwerk-16.webp',  // finished interior with floor
+    ],
   },
   {
     slug: 'elektriciteit',
@@ -149,7 +192,13 @@ export const SERVICES = [
       'Vervanging of uitbreiding van de meterkast',
       'Eindkeuring en veiligheidsinspectie',
     ],
-    images: [img(9), img(10), img(11), img(12)],
+    // GitHub authentic electrical work + professional Unsplash
+    images: [
+      U.electric1,   // professional: electrician at work
+      img(20),       // authentic: elektrische leidingen in muur aangelegd
+      U.electric2,   // professional: electrician at panel
+      U.electric3,   // professional: authorized installer
+    ],
   },
   {
     slug: 'badkamer-renovatie',
@@ -175,11 +224,12 @@ export const SERVICES = [
       'Installatie van sanitair, douche en/of bad',
       'Plaatsing van spiegels, kranen en accessoires',
     ],
+    // Mix: authentic GitHub bathroom photos + premium Unsplash bathrooms
     images: [
-      BK + 'badkamer_toilet-03.webp',
-      BK + 'badkamer_toilet-04.webp',
-      BK + 'badkamer_toilet-05.webp',
-      BK + 'badkamer_toilet-06.webp',
+      U.bath1,                               // premium: luxe badkamer eindresultaat
+      BK + 'badkamer_toilet-03.webp',        // authentic client photo
+      U.bath2,                               // premium: moderne badkamer met douche
+      BK + 'badkamer_toilet-05.webp',        // authentic client photo
     ],
   },
   {
@@ -206,7 +256,13 @@ export const SERVICES = [
       'Plaatsing van nieuwe keuken en apparatuur',
       'Tegelwerk achterwand en afwerking',
     ],
-    images: [img(13), img(14), img(15), img(16)],
+    // High-quality Unsplash kitchen images (royalty-free)
+    images: [
+      U.kitchen1,   // premium: modern white kitchen with island
+      U.kitchen2,   // premium: marble kitchen island
+      U.kitchen3,   // premium: white cabinet kitchen detail
+      U.kitchen4,   // premium: bright kitchen interior
+    ],
   },
   {
     slug: 'algemene-verbouwing',
@@ -232,11 +288,12 @@ export const SERVICES = [
       'Afwerking: stucwerk, schilderwerk, tegels',
       'Oplevering en nazorg',
     ],
+    // Authentic GitHub renovation images
     images: [
-      WK + 'woonkamer-01.webp',
-      WK + 'woonkamer-24.webp',
-      SS + 'stukwerk_schilderwerk-26.webp',
-      BK + 'badkamer_toilet-07.webp',
+      WK + 'woonkamer-01.webp',              // authentic: woonkamer renovatie
+      WK + 'woonkamer-24.webp',              // authentic: woonkamer afgerond
+      SS + 'stukwerk_schilderwerk-26.webp',   // authentic: renovatie detail
+      BK + 'badkamer_toilet-07.webp',         // authentic: complete verbouwing
     ],
   },
 ];

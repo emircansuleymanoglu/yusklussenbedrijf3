@@ -2,35 +2,36 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 
-const GH = 'https://raw.githubusercontent.com/emircansuleymanoglu/yusklussenbedrijf2/main/Resimler/Web_Gorseller/';
-const BK = GH + 'Badkamer_Toilet/';
-const SS = GH + 'Stukwerk_Schilderwerk/';
-const WK = GH + 'Woonkamer/';
+const GH = 'https://raw.githubusercontent.com/emircansuleymanoglu/yusklussenbedrijf2/main/Resimler/';
+const WEB = GH + 'Web_Gorseller/';
+const SS = WEB + 'Stukwerk_Schilderwerk/';
+const WK = WEB + 'Woonkamer/';
+const img = (n) => `${GH}image${String(n).padStart(5, '0')}.png`;
 
 const PROJECTS = [
   {
     id: 1,
-    title: 'Badkamer Renovatie',
+    title: 'Luxe Badkamer Renovatie',
     location: 'Rotterdam',
     category: 'Badkamer',
-    desc: 'Volledige badkamerrenovatie met nieuwe tegels, douche en modern sanitair.',
-    image: BK + 'badkamer_toilet-03.webp',
+    desc: 'Volledige badkamerrenovatie met premium tegels, inloopdouche en modern sanitair.',
+    image: 'https://images.unsplash.com/photo-1661107259637-4e1c55462428?crop=entropy&cs=srgb&fm=jpg&w=800&q=85',
   },
   {
     id: 2,
-    title: 'Stucwerk Woonkamer',
+    title: 'Stucwerk & Wandpanelen',
     location: 'Den Haag',
     category: 'Stucwerk',
-    desc: 'Glad stucwerk op alle wanden en het plafond, inclusief schilderwerk.',
-    image: SS + 'stukwerk_schilderwerk-08.webp',
+    desc: 'Decoratieve wandpanelen met geïntegreerde TV-unit en glad stucwerk.',
+    image: img(1),
   },
   {
     id: 3,
-    title: 'Schilderwerk Interieur',
+    title: 'Schilderwerk Woonkamer',
     location: 'Amsterdam',
     category: 'Schilderwerk',
-    desc: 'Volledig binnenschilderwerk in moderne kleuren met strakke afwerking.',
-    image: SS + 'stukwerk_schilderwerk-17.webp',
+    desc: 'Volledig binnenschilderwerk in moderne navy-blauwe accentkleur.',
+    image: 'https://images.unsplash.com/photo-1655665151765-98a95126ba41?crop=entropy&cs=srgb&fm=jpg&w=800&q=85',
   },
   {
     id: 4,
@@ -42,23 +43,47 @@ const PROJECTS = [
   },
   {
     id: 5,
-    title: 'Badkamer & Toilet',
+    title: 'Badkamer & Toilet Renovatie',
     location: 'Eindhoven',
     category: 'Badkamer',
-    desc: 'Moderne badkamer en toilet volledig gerenoveerd met luxe afwerking.',
-    image: BK + 'badkamer_toilet-06.webp',
+    desc: 'Moderne badkamer en toilet volledig gerenoveerd met checker-vloertegels.',
+    image: img(5),
   },
   {
     id: 6,
-    title: 'Schilderwerk & Stucwerk',
+    title: 'Moderne Keuken Renovatie',
     location: 'Haarlem',
+    category: 'Keuken',
+    desc: 'Complete keukenrenovatie met eiland, marmeren aanrechtblad en inbouwapparatuur.',
+    image: 'https://images.unsplash.com/photo-1565183928294-7063f23ce0f8?crop=entropy&cs=srgb&fm=jpg&w=800&q=85',
+  },
+  {
+    id: 7,
+    title: 'Visgraat Vloer Installatie',
+    location: 'Rotterdam',
+    category: 'Vloerverwarming',
+    desc: 'Visgraat parketvloer voor/na — compleet met vloerverwarming installatie.',
+    image: img(40),
+  },
+  {
+    id: 8,
+    title: 'Stucwerk Afwerking',
+    location: 'Den Haag',
+    category: 'Stucwerk',
+    desc: 'Professioneel stucwerk en pleisterwerk voor strakke wanden en plafonds.',
+    image: SS + 'stukwerk_schilderwerk-08.webp',
+  },
+  {
+    id: 9,
+    title: 'Schilderwerk in Uitvoering',
+    location: 'Utrecht',
     category: 'Schilderwerk',
-    desc: 'Gecombineerd stuc- en schilderwerk voor een frisse, strakke uitstraling.',
-    image: SS + 'stukwerk_schilderwerk-22.webp',
+    desc: 'Binnenschilderwerk met verfschilders aan het werk, professioneel en netjes.',
+    image: img(15),
   },
 ];
 
-const CATS = ['Alle', 'Badkamer', 'Stucwerk', 'Schilderwerk', 'Verbouwing'];
+const CATS = ['Alle', 'Badkamer', 'Stucwerk', 'Schilderwerk', 'Keuken', 'Vloerverwarming', 'Verbouwing'];
 
 export default function Projecten() {
   const [active, setActive] = useState('Alle');
