@@ -1,0 +1,103 @@
+{
+  "project_name": "Yus Klussenbedrijf",
+  "theme": "light",
+  "archetype": "4_swiss_high_contrast_corporate",
+  "emotional_tone": "Professional, reliable, premium, secure, and clear",
+  "colors": {
+    "primary": "#0F172A",
+    "primary_hover": "#1E293B",
+    "accent_blue": "#0369A1",
+    "accent_blue_hover": "#0284C7",
+    "whatsapp_green": "#25D366",
+    "whatsapp_green_hover": "#20BD5A",
+    "background": "#FFFFFF",
+    "surface_light": "#F8FAFC",
+    "surface_border": "#E2E8F0",
+    "text_main": "#0F172A",
+    "text_muted": "#64748B"
+  },
+  "typography": {
+    "heading_font": "Outfit, sans-serif",
+    "body_font": "Manrope, sans-serif",
+    "rules": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900",
+      "h3": "text-xl sm:text-2xl font-semibold tracking-tight text-slate-900",
+      "body": "text-base lg:text-lg leading-relaxed text-slate-600",
+      "buttons": "font-bold tracking-wide uppercase text-sm",
+      "overline": "text-sm font-bold uppercase tracking-[0.2em] text-sky-700"
+    }
+  },
+  "layout_and_spacing": {
+    "section_padding": "py-20 lg:py-32",
+    "container": "max-w-7xl mx-auto px-6 lg:px-8",
+    "bento_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6",
+    "gallery_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
+    "card_padding": "p-8",
+    "border_radius": "rounded-2xl"
+  },
+  "components_strategy": {
+    "navigation": "Sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-slate-200. Must have desktop links and primary CTA 'Offerte aanvragen'.",
+    "hero": "Split layout or image with gradient overlay (bg-slate-900/40) for text contrast. High impact H1.",
+    "service_cards": "Use raw Tailwind (not Shadcn cards). Flat background `#F8FAFC`, 1px border `#E2E8F0`. Hover state: `-translate-y-1 shadow-xl border-sky-600`.",
+    "gallery": "Grid layout. Images must have `aspect-[4/3]` and `object-cover`. On hover, scale image slightly inside overflow-hidden container.",
+    "forms": "Use Shadcn inputs and textareas for 'Offerte aanvragen' and Contact. Focus states must use `focus:ring-sky-600`.",
+    "whatsapp_button": "Fixed bottom-6 right-6 z-50 rounded-full w-14 h-14 bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform."
+  },
+  "motion": {
+    "framer_motion_required": true,
+    "fade_up": {
+      "initial": { "opacity": 0, "y": 20 },
+      "animate": { "opacity": 1, "y": 0 },
+      "transition": { "duration": 0.5, "ease": "easeOut" }
+    },
+    "stagger_children": 0.1
+  },
+  "media": {
+    "hero_background": "https://images.unsplash.com/photo-1613545325278-f24b0cae1224?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBsdXh1cnklMjBob21lJTIwcmVub3ZhdGlvbiUyMGludGVyaW9yfGVufDB8fHx8MTc3ODk3MDY2OHww&ixlib=rb-4.1.0&q=85",
+    "services_overview": "https://images.unsplash.com/photo-1679797850019-3d0d8659a695?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBjYXJwZW50ZXIlMjBidWlsZGVyJTIwYXQlMjB3b3JrfGVufDB8fHx8MTc3ODk3MDY2OHww&ixlib=rb-4.1.0&q=85",
+    "gallery": [
+      "https://images.unsplash.com/photo-1639405069836-f82aa6dcb900?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBiYXRocm9vbSUyMGtpdGNoZW4lMjBkZXNpZ258ZW58MHx8fHwxNzc4OTcwNjY4fDA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1628744876497-eb30460be9f6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBsdXh1cnklMjBob21lJTIwcmVub3ZhdGlvbiUyMGludGVyaW9yfGVufDB8fHx8MTc3ODk3MDY2OHww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1646324554833-f0b6a479fa5d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBjYXJwZW50ZXIlMjBidWlsZGVyJTIwYXQlMjB3b3JrfGVufDB8fHx8MTc3ODk3MDY2OHww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1518733057094-95b53143d2a7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBsdXh1cnklMjBob21lJTIwcmVub3ZhdGlvbiUyMGludGVyaW9yfGVufDB8fHx8MTc3ODk3MDY2OHww&ixlib=rb-4.1.0&q=85"
+    ]
+  },
+  "content": {
+    "language": "Dutch",
+    "company_name": "Yus Klussenbedrijf",
+    "phone": "+31 6 21547256",
+    "email": "info@yusklussenbedrijf.nl",
+    "location": "Nederland",
+    "services_list": [
+      "Stucwerk",
+      "Schilderwerk",
+      "Timmerwerk",
+      "Vloerverwarming",
+      "Elektriciteit",
+      "Badkamer renovatie",
+      "Keuken renovatie",
+      "Algemene verbouwing"
+    ],
+    "pages": [
+      "Home",
+      "Diensten",
+      "Projecten",
+      "Contact",
+      "Offerte aanvragen"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Install framer-motion, lucide-react, react-icons.",
+    "Build the UI in React (.js files, not .tsx) with Tailwind CSS.",
+    "Add data-testid to all interactive elements (buttons, links, form inputs).",
+    "Use 'Outfit' for headings and 'Manrope' for body (add Google Fonts link in index.html).",
+    "Match colors exactly as described in the colors object. The theme must feel professional and high-trust.",
+    "Ensure the hero has a dark overlay if text is over an image, or use a clean split layout.",
+    "For the Projecten gallery, implement a modern hover effect (zoom in on image slightly, show description overlay).",
+    "Implement the WhatsApp floating button fixed to bottom right corner using the green color.",
+    "Create the contact/quote form using clean, modern inputs. Include validation for Offerte aanvraag.",
+    "Follow 'generous spacing' rules: do not compress sections. Use py-20 to py-32 for gaps between distinct sections.",
+    "Build a sticky navigation bar with glassmorphism (backdrop-blur). Ensure the primary CTA 'Offerte aanvragen' stands out in the nav."
+  ]
+}
