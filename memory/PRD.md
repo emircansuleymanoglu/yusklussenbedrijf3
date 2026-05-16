@@ -48,28 +48,31 @@ Landing page only - no login, no payment, no e-commerce.
 - **Contact**: Contact details + contact form + opening hours
 - **Footer**: Brand info, navigation, services list, contact
 
-## What's Been Implemented (Date: Feb 2026)
+## What's Been Implemented (Updated: Feb 2026)
 - [x] Full React + FastAPI + MongoDB project from scratch
 - [x] Professional Dutch landing page with all sections
-- [x] Sticky glassmorphism navbar with mobile menu
-- [x] Animated hero with background image, CTA buttons
+- [x] Sticky glassmorphism navbar with mobile menu + real YUS logo
+- [x] Lighter/brighter hero with stars rating + trust bar
 - [x] Stats section with icons
-- [x] 8 service cards with colored icons
-- [x] Project gallery with 6 projects, category filter
+- [x] 8 updated service cards (Stucwerk & Pleisterwerk, Schilderwerk Binnen & Buiten, etc.)
+- [x] Clickable service cards → /diensten/{slug} React Router routes
+- [x] 8 service detail pages with image carousel, benefits, included, CTAs, pre-select
+- [x] Project gallery with GitHub client photos (Badkamer_Toilet, Stukwerk_Schilderwerk, Woonkamer)
 - [x] Testimonials section
-- [x] Offerte form: full validation + honeypot spam protection + MongoDB storage
-- [x] Contact form: validation + MongoDB storage
-- [x] Footer with all links and company info
-- [x] WhatsApp floating button with tooltip
+- [x] Offerte form: validation + honeypot + MongoDB + pre-select from service pages
+- [x] Contact form: validation + MongoDB + WhatsApp CTA + no Google Maps
+- [x] Contact info: Rotterdam en omgeving, +31 6 12345678
+- [x] Footer with YUS logo (white on dark), links, services
+- [x] WhatsApp floating button with tooltip (+31 6 12345678)
 - [x] Backend API: /api/health, /api/offerte, /api/contact
-- [x] SEO meta tags in Dutch
-- [x] Google Fonts: Outfit (headings) + Manrope (body)
+- [x] SEO meta tags in Dutch + dynamic title per service page
+- [x] Google Fonts: Outfit + Manrope
 - [x] Framer Motion animations throughout
 
 ## Design
 - Colors: Primary #0F172A, Accent #0369A1, Background #FFFFFF
-- Logo: Placeholder YK text logo (to be replaced with client logo)
-- Images: Unsplash stock photos (to be replaced with client photos)
+- Logo: Real YUS Klussenbedrijf PNG (CSS-filtered white on dark)
+- Images: GitHub client photos (categorized) + Unsplash hero
 
 ## Prioritized Backlog
 
