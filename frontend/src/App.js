@@ -1,31 +1,20 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Stats from './components/Stats';
-import Diensten from './components/Diensten';
-import Projecten from './components/Projecten';
-import Testimonials from './components/Testimonials';
-import OfferteForm from './components/OfferteForm';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ServiceDetail from './pages/ServiceDetail';
 import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   return (
-    <div className="font-body overflow-x-hidden">
-      <Navbar />
-      <main>
-        <Hero />
-        <Stats />
-        <Diensten />
-        <Projecten />
-        <Testimonials />
-        <OfferteForm />
-        <Contact />
-      </main>
-      <Footer />
-      <WhatsAppButton />
-    </div>
+    <Router>
+      <div className="font-body overflow-x-hidden">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/diensten/:slug" element={<ServiceDetail />} />
+        </Routes>
+        <WhatsAppButton />
+      </div>
+    </Router>
   );
 }
 
