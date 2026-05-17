@@ -92,17 +92,17 @@ function checkRateLimit(string $ip): void {
     $hash    = md5($ip);
     $now     = time();
 
-    // Per uur: max 3
+    // Per uur: max 10
     $hFile   = RATE_DIR . $hash . '_h.json';
     $hData   = file_exists($hFile) ? (json_decode(file_get_contents($hFile), true) ?: []) : [];
     $hData   = array_values(array_filter($hData, fn($t) => $t > $now - 3600));
-    if (count($hData) >= 3) block('rate_limit_hour');
+    if (count($hData) >= 10) block('rate_limit_hour');
 
-    // Per dag: max 8
+    // Per dag: max 20
     $dFile   = RATE_DIR . $hash . '_d.json';
     $dData   = file_exists($dFile) ? (json_decode(file_get_contents($dFile), true) ?: []) : [];
     $dData   = array_values(array_filter($dData, fn($t) => $t > $now - 86400));
-    if (count($dData) >= 8) block('rate_limit_day');
+    if (count($dData) >= 20) block('rate_limit_day');
 }
 
 function recordSubmission(string $ip): void {
