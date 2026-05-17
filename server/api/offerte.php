@@ -42,68 +42,72 @@ $sTelefoon     = sanitize($telefoon);
 $sAdres        = sanitize($adres);
 $sDienst       = sanitize($dienst);
 $sOmschrijving = nl2br(sanitize($omschrijving));
-$datum         = date('d-m-Y \o\m H:i');
+$datum         = date('j F Y');
 
-// ── Interne notificatiemail ───────────────────────────────────────────────────
+// ── Interne notificatie ───────────────────────────────────────────────────────
 $subject = '=?UTF-8?B?' . base64_encode('Offerte aanvraag: ' . $dienst . ' – ' . $naam) . '?=';
 
 $adresRij = $sAdres ? '
       <tr>
-        <td style="padding:11px 0;border-bottom:1px solid #f2f2f2;font-size:13px;color:#999999;width:110px;vertical-align:top">Adres</td>
-        <td style="padding:11px 0;border-bottom:1px solid #f2f2f2;font-size:14px;color:#111111">' . $sAdres . '</td>
+        <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:12px;color:#888888;text-transform:uppercase;letter-spacing:0.5px;width:100px;vertical-align:top">Adres</td>
+        <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:14px;color:#111111">' . $sAdres . '</td>
       </tr>' : '';
 
-$body = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased">
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f0f0f0;padding:32px 16px">
-<tr><td align="center">
-<table width="560" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;width:100%">
+$body = '<!DOCTYPE html>
+<html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f0f2f5;font-family:Arial,Helvetica,sans-serif">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f0f2f5">
+<tr><td align="center" style="padding:32px 16px">
+<table width="580" cellpadding="0" cellspacing="0" border="0" style="max-width:580px;width:100%">
 
-  <!-- Header -->
-  <tr><td style="background:#111111;padding:28px 36px;border-radius:6px 6px 0 0">
-    <table width="100%" cellpadding="0" cellspacing="0" border="0">
-      <tr>
-        <td><span style="color:#ffffff;font-size:17px;font-weight:700;letter-spacing:0.3px">YUS Klussenbedrijf</span></td>
-        <td align="right"><span style="color:#888888;font-size:12px">Offerte aanvraag</span></td>
-      </tr>
-    </table>
+  <tr><td style="background:#1e2d4f;padding:20px 28px;border-radius:6px 6px 0 0">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td style="font-size:14px;font-weight:700;color:#ffffff;letter-spacing:1px;text-transform:uppercase">YUS Klussenbedrijf</td>
+      <td align="right"><a href="https://yusklussenbedrijf.nl" style="font-size:12px;color:#8aabdc;text-decoration:none">yusklussenbedrijf.nl</a></td>
+    </tr></table>
   </td></tr>
 
-  <!-- Body -->
-  <tr><td style="background:#ffffff;padding:32px 36px;border-left:1px solid #e4e4e4;border-right:1px solid #e4e4e4">
+  <tr><td style="background:#ffffff;padding:32px 28px 0">
+    <p style="margin:0 0 4px;font-size:22px;font-weight:700;color:#111111">Nieuwe offerte aanvraag</p>
+    <p style="margin:0 0 24px;font-size:13px;color:#888888">YUS Klussenbedrijf &mdash; ' . $datum . '</p>
+    <hr style="border:none;border-top:1px solid #eeeeee;margin:0 0 24px">
+  </td></tr>
 
-    <p style="margin:0 0 24px;font-size:13px;color:#999999">' . $datum . '</p>
-
-    <!-- Klantgegevens -->
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;margin-bottom:28px">
+  <tr><td style="background:#ffffff;padding:0 28px">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse">
       <tr>
-        <td style="padding:11px 0;border-bottom:1px solid #f2f2f2;font-size:13px;color:#999999;width:110px;vertical-align:top">Naam</td>
-        <td style="padding:11px 0;border-bottom:1px solid #f2f2f2;font-size:14px;color:#111111;font-weight:600">' . $sNaam . '</td>
+        <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:12px;color:#888888;text-transform:uppercase;letter-spacing:0.5px;width:100px;vertical-align:top">Naam</td>
+        <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:14px;color:#111111;font-weight:600">' . $sNaam . '</td>
       </tr>
       <tr>
-        <td style="padding:11px 0;border-bottom:1px solid #f2f2f2;font-size:13px;color:#999999;vertical-align:top">E-mail</td>
-        <td style="padding:11px 0;border-bottom:1px solid #f2f2f2;font-size:14px"><a href="mailto:' . $sEmail . '" style="color:#111111;text-decoration:none">' . $sEmail . '</a></td>
+        <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:12px;color:#888888;text-transform:uppercase;letter-spacing:0.5px;vertical-align:top">E-mail</td>
+        <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:14px;color:#111111">' . $sEmail . '</td>
       </tr>
       <tr>
-        <td style="padding:11px 0;border-bottom:1px solid #f2f2f2;font-size:13px;color:#999999;vertical-align:top">Telefoon</td>
-        <td style="padding:11px 0;border-bottom:1px solid #f2f2f2;font-size:14px"><a href="tel:' . $sTelefoon . '" style="color:#111111;text-decoration:none">' . $sTelefoon . '</a></td>
+        <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:12px;color:#888888;text-transform:uppercase;letter-spacing:0.5px;vertical-align:top">Telefoon</td>
+        <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:14px;color:#111111">' . $sTelefoon . '</td>
       </tr>
       ' . $adresRij . '
       <tr>
-        <td style="padding:11px 0;font-size:13px;color:#999999;vertical-align:top">Dienst</td>
-        <td style="padding:11px 0;font-size:14px;color:#111111;font-weight:700">' . $sDienst . '</td>
+        <td style="padding:10px 0;font-size:12px;color:#888888;text-transform:uppercase;letter-spacing:0.5px;vertical-align:top">Dienst</td>
+        <td style="padding:10px 0;font-size:14px;color:#1e2d4f;font-weight:700">' . $sDienst . '</td>
       </tr>
     </table>
-
-    <!-- Omschrijving -->
-    <p style="margin:0 0 10px;font-size:12px;color:#999999;text-transform:uppercase;letter-spacing:0.8px">Omschrijving</p>
-    <div style="padding:16px 20px;background:#f8f8f8;border-left:3px solid #cccccc;font-size:14px;color:#333333;line-height:1.75">' . $sOmschrijving . '</div>
-
   </td></tr>
 
-  <!-- Footer -->
-  <tr><td style="background:#f8f8f8;padding:16px 36px;border:1px solid #e4e4e4;border-top:none;border-radius:0 0 6px 6px">
-    <p style="margin:0;font-size:11px;color:#bbbbbb">Ontvangen via yusklussenbedrijf.nl &nbsp;&middot;&nbsp; ' . $datum . '</p>
+  <tr><td style="background:#ffffff;padding:24px 28px 0">
+    <p style="margin:0 0 10px;font-size:11px;font-weight:700;color:#888888;text-transform:uppercase;letter-spacing:1px">Omschrijving</p>
+    <div style="background:#f7f8fa;border-radius:4px;padding:16px 18px;font-size:14px;color:#333333;line-height:1.8">' . $sOmschrijving . '</div>
+  </td></tr>
+
+  <tr><td style="background:#ffffff;padding:28px">
+    <p style="margin:0;font-size:12px;color:#bbbbbb">' . $datum . '</p>
+  </td></tr>
+
+  <tr><td style="background:#f7f8fa;border-top:1px solid #eeeeee;border-radius:0 0 6px 6px;padding:16px 28px">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td style="font-size:11px;color:#aaaaaa">yusklussenbedrijf.nl &nbsp;&middot;&nbsp; +31 6 21547256 &nbsp;&middot;&nbsp; info@yusklussenbedrijf.nl</td>
+    </tr></table>
   </td></tr>
 
 </table>
@@ -113,62 +117,114 @@ $body = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="
 $sent = sendMail(TO_EMAIL, $subject, $body, $sEmail);
 
 // ── Bevestigingsmail aan klant ────────────────────────────────────────────────
-$klantSubject = '=?UTF-8?B?' . base64_encode('Uw offerte-aanvraag is ontvangen – YUS Klussenbedrijf') . '?=';
+$klantSubject = '=?UTF-8?B?' . base64_encode('Uw offerte-aanvraag is ontvangen') . '?=';
 
 $klantAdresRij = $sAdres ? '
       <tr>
-        <td style="padding:11px 16px;border-top:1px solid #f0f0f0;font-size:13px;color:#999999;width:120px;vertical-align:top">Adres</td>
-        <td style="padding:11px 16px;border-top:1px solid #f0f0f0;font-size:14px;color:#111111">' . $sAdres . '</td>
+        <td style="padding:9px 14px;border-top:1px solid #eeeeee;font-size:12px;color:#888888;text-transform:uppercase;letter-spacing:0.5px;width:110px;vertical-align:top">Adres</td>
+        <td style="padding:9px 14px;border-top:1px solid #eeeeee;font-size:14px;color:#111111">' . $sAdres . '</td>
       </tr>' : '';
 
-$klantBody = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased">
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f0f0f0;padding:32px 16px">
-<tr><td align="center">
-<table width="560" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;width:100%">
+$klantBody = '<!DOCTYPE html>
+<html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f0f2f5;font-family:Arial,Helvetica,sans-serif">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f0f2f5">
+<tr><td align="center" style="padding:32px 16px">
+<table width="580" cellpadding="0" cellspacing="0" border="0" style="max-width:580px;width:100%">
 
   <!-- Header -->
-  <tr><td style="background:#111111;padding:28px 36px;border-radius:6px 6px 0 0">
-    <span style="color:#ffffff;font-size:17px;font-weight:700;letter-spacing:0.3px">YUS Klussenbedrijf</span><br>
-    <span style="color:#888888;font-size:12px;margin-top:4px;display:inline-block">yusklussenbedrijf.nl &nbsp;&middot;&nbsp; +31 6 21547256</span>
+  <tr><td style="background:#1e2d4f;padding:20px 28px;border-radius:6px 6px 0 0">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td style="font-size:14px;font-weight:700;color:#ffffff;letter-spacing:1px;text-transform:uppercase">YUS Klussenbedrijf</td>
+      <td align="right"><a href="https://yusklussenbedrijf.nl" style="font-size:12px;color:#8aabdc;text-decoration:none">yusklussenbedrijf.nl</a></td>
+    </tr></table>
   </td></tr>
 
-  <!-- Body -->
-  <tr><td style="background:#ffffff;padding:36px;border-left:1px solid #e4e4e4;border-right:1px solid #e4e4e4">
+  <!-- Titel -->
+  <tr><td style="background:#ffffff;padding:32px 28px 0">
+    <p style="margin:0 0 4px;font-size:22px;font-weight:700;color:#111111">Uw offerte-aanvraag is ontvangen</p>
+    <p style="margin:0 0 24px;font-size:13px;color:#888888">YUS Klussenbedrijf &mdash; ' . $datum . '</p>
+    <hr style="border:none;border-top:1px solid #eeeeee;margin:0 0 24px">
+    <p style="margin:0 0 16px;font-size:15px;color:#222222">Beste ' . $sNaam . ',</p>
+    <p style="margin:0 0 24px;font-size:14px;color:#555555;line-height:1.7">Bedankt voor uw offerte-aanvraag. Uw aanvraag is goed ontvangen en wordt zo spoedig mogelijk behandeld door ons team.</p>
+  </td></tr>
 
-    <p style="margin:0 0 20px;font-size:15px;color:#111111">Beste ' . $sNaam . ',</p>
+  <!-- Stappen -->
+  <tr><td style="background:#ffffff;padding:0 28px">
+    <div style="background:#f7f8fa;border-radius:6px;padding:20px">
+      <p style="margin:0 0 16px;font-size:11px;font-weight:700;color:#888888;text-transform:uppercase;letter-spacing:1px">Wat kunt u verwachten</p>
 
-    <p style="margin:0 0 24px;font-size:14px;color:#444444;line-height:1.7">
-      Bedankt voor uw offerte-aanvraag. We hebben uw aanvraag goed ontvangen en nemen binnen <strong style="color:#111111">24 uur</strong> contact met u op voor een afspraak.
-    </p>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:14px">
+        <tr>
+          <td width="34" valign="top"><div style="width:26px;height:26px;border-radius:50%;background:#1e2d4f;text-align:center;line-height:26px;font-size:12px;font-weight:700;color:#ffffff">1</div></td>
+          <td style="padding-left:12px;vertical-align:top">
+            <p style="margin:0 0 2px;font-size:14px;font-weight:600;color:#111111">Aanvraag ontvangen</p>
+            <p style="margin:0;font-size:13px;color:#777777;line-height:1.5">Uw gegevens zijn veilig en in goede orde ontvangen.</p>
+          </td>
+        </tr>
+      </table>
 
-    <!-- Samenvatting -->
-    <p style="margin:0 0 12px;font-size:12px;color:#999999;text-transform:uppercase;letter-spacing:0.8px">Samenvatting aanvraag</p>
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;border:1px solid #eeeeee;border-radius:4px;margin-bottom:28px">
-      <tr style="background:#f8f8f8">
-        <td style="padding:11px 16px;font-size:13px;color:#999999;width:120px;vertical-align:top">Dienst</td>
-        <td style="padding:11px 16px;font-size:14px;color:#111111;font-weight:700">' . $sDienst . '</td>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:14px">
+        <tr>
+          <td width="34" valign="top"><div style="width:26px;height:26px;border-radius:50%;background:#1e2d4f;text-align:center;line-height:26px;font-size:12px;font-weight:700;color:#ffffff">2</div></td>
+          <td style="padding-left:12px;vertical-align:top">
+            <p style="margin:0 0 2px;font-size:14px;font-weight:600;color:#111111">Beoordeling binnen <span style="color:#1e2d4f">24 uur</span></p>
+            <p style="margin:0;font-size:13px;color:#777777;line-height:1.5">Een van onze medewerkers neemt persoonlijk contact met u op.</p>
+          </td>
+        </tr>
+      </table>
+
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td width="34" valign="top"><div style="width:26px;height:26px;border-radius:50%;background:#1e2d4f;text-align:center;line-height:26px;font-size:12px;font-weight:700;color:#ffffff">3</div></td>
+          <td style="padding-left:12px;vertical-align:top">
+            <p style="margin:0 0 2px;font-size:14px;font-weight:600;color:#111111">Offerte op maat</p>
+            <p style="margin:0;font-size:13px;color:#777777;line-height:1.5">U ontvangt een concrete offerte, afgestemd op uw wensen en situatie.</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </td></tr>
+
+  <!-- Aanvraag samenvatting -->
+  <tr><td style="background:#ffffff;padding:24px 28px 0">
+    <p style="margin:0 0 10px;font-size:11px;font-weight:700;color:#888888;text-transform:uppercase;letter-spacing:1px">Uw aanvraag</p>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;border:1px solid #eeeeee;border-radius:4px">
+      <tr style="background:#f7f8fa">
+        <td style="padding:9px 14px;font-size:12px;color:#888888;text-transform:uppercase;letter-spacing:0.5px;width:110px;vertical-align:top">Dienst</td>
+        <td style="padding:9px 14px;font-size:14px;color:#1e2d4f;font-weight:700">' . $sDienst . '</td>
       </tr>
       ' . $klantAdresRij . '
-      <tr style="background:#f8f8f8">
-        <td style="padding:11px 16px;border-top:1px solid #f0f0f0;font-size:13px;color:#999999;vertical-align:top">Omschrijving</td>
-        <td style="padding:11px 16px;border-top:1px solid #f0f0f0;font-size:14px;color:#333333;line-height:1.6">' . $sOmschrijving . '</td>
+      <tr>
+        <td style="padding:9px 14px;border-top:1px solid #eeeeee;font-size:12px;color:#888888;text-transform:uppercase;letter-spacing:0.5px;vertical-align:top">Omschrijving</td>
+        <td style="padding:9px 14px;border-top:1px solid #eeeeee;font-size:14px;color:#333333;line-height:1.7">' . $sOmschrijving . '</td>
       </tr>
     </table>
+  </td></tr>
 
-    <p style="margin:0 0 20px;font-size:14px;color:#444444;line-height:1.7">
-      Heeft u in de tussentijd vragen? Bel ons op
-      <a href="tel:+31621547256" style="color:#111111;font-weight:600;text-decoration:none">+31 6 21547256</a>
-      of reply op dit bericht.
-    </p>
+  <!-- Telefoon -->
+  <tr><td style="background:#ffffff;padding:24px 28px 0">
+    <p style="margin:0 0 4px;font-size:11px;font-weight:700;color:#888888;text-transform:uppercase;letter-spacing:1px">Telefonisch bereikbaar</p>
+    <p style="margin:0 0 20px;font-size:20px;font-weight:700;color:#1e2d4f">+31 6 21547256</p>
+    <p style="margin:0;font-size:14px;color:#555555;line-height:1.7">Met vriendelijke groet,<br><strong style="color:#111111">YUS Klussenbedrijf</strong></p>
+  </td></tr>
 
-    <p style="margin:0;font-size:14px;color:#111111;line-height:1.7">Met vriendelijke groet,<br><strong>YUS Klussenbedrijf</strong></p>
-
+  <!-- Diensten -->
+  <tr><td style="background:#ffffff;padding:20px 28px 0">
+    <p style="margin:0 0 10px;font-size:11px;font-weight:700;color:#888888;text-transform:uppercase;letter-spacing:1px">Onze diensten</p>
+    <span style="display:inline-block;background:#eef1f8;color:#1e2d4f;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;margin:0 6px 6px 0">Stucwerk</span>
+    <span style="display:inline-block;background:#eef1f8;color:#1e2d4f;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;margin:0 6px 6px 0">Schilderwerk</span>
+    <span style="display:inline-block;background:#eef1f8;color:#1e2d4f;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;margin:0 6px 6px 0">Badkamer renovatie</span>
+    <span style="display:inline-block;background:#eef1f8;color:#1e2d4f;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;margin:0 6px 6px 0">Verbouwing</span>
+    <span style="display:inline-block;background:#eef1f8;color:#1e2d4f;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;margin:0 6px 6px 0">Vloerverwarming</span>
   </td></tr>
 
   <!-- Footer -->
-  <tr><td style="background:#f8f8f8;padding:16px 36px;border:1px solid #e4e4e4;border-top:none;border-radius:0 0 6px 6px">
-    <p style="margin:0;font-size:11px;color:#bbbbbb">U ontvangt dit bericht omdat u een aanvraag heeft ingediend via <a href="https://yusklussenbedrijf.nl" style="color:#bbbbbb">yusklussenbedrijf.nl</a></p>
+  <tr><td style="padding-top:24px">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f7f8fa;border:1px solid #eeeeee;border-radius:0 0 6px 6px;padding:0"><tr>
+      <td style="padding:16px 28px;font-size:11px;color:#aaaaaa">YUS Klussenbedrijf &nbsp;&middot;&nbsp; +31 6 21547256 &nbsp;&middot;&nbsp; info@yusklussenbedrijf.nl</td>
+      <td align="right" style="padding:16px 28px"><a href="https://yusklussenbedrijf.nl" style="font-size:11px;color:#1e2d4f;text-decoration:none;font-weight:600">yusklussenbedrijf.nl &rsaquo;</a></td>
+    </tr></table>
   </td></tr>
 
 </table>
