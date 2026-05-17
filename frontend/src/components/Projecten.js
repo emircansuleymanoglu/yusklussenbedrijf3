@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 
 const GH = 'https://raw.githubusercontent.com/emircansuleymanoglu/yusklussenbedrijf2/main/Resimler/';
-const WEB = GH + 'Web_Gorseller/';
-const SS = WEB + 'Stukwerk_Schilderwerk/';
 const img = (n) => `${GH}image${String(n).padStart(5, '0')}.png`;
 
 const PROJECTS = [
