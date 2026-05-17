@@ -5,24 +5,24 @@ import { Quote, Star } from 'lucide-react';
 const testimonials = [
   {
     id: 1,
-    name: 'Jan de Vries',
-    role: 'Woningeigenaar, Amsterdam',
+    name: 'Mohamed Achraf',
+    role: 'Huurder, Rotterdam',
     rating: 5,
-    text: 'Yus heeft onze badkamer volledig gerenoveerd. Vakkundig werk, op tijd klaar en netjes opgeleverd. Absoluut een aanrader voor iedereen die op zoek is naar betrouwbaar renovatiewerk.',
+    text: 'Yus heeft de vloerverwarming bij ons thuis geïnstalleerd. Netjes, snel en voor een goede prijs. De mannen werkten heel zorgvuldig en ruimden alles op na afloop. Zeker een aanrader!',
   },
   {
     id: 2,
-    name: 'Fatima El Bouzidi',
-    role: 'Huiseigenaar, Rotterdam',
+    name: 'Sandra Willems',
+    role: 'Woningeigenaar, Den Haag',
     rating: 5,
-    text: 'Wij hebben Yus Klussenbedrijf ingeschakeld voor de renovatie van onze keuken en woonkamer. Het resultaat overtrof onze verwachtingen. Professioneel, vriendelijk en transparant in communicatie.',
+    text: 'Onze badkamer is compleet gerenoveerd door Yus Klussenbedrijf. Van begin tot eind liep alles soepel. Ze kwamen op tijd, communiceerden duidelijk en het eindresultaat is prachtig.',
   },
   {
     id: 3,
-    name: 'Peter Janssen',
-    role: 'Appartementseigenaar, Utrecht',
+    name: 'Erwin Bakker',
+    role: 'Huiseigenaar, Rotterdam',
     rating: 5,
-    text: 'Geweldig bedrijf! Stucwerk en schilderwerk in het hele appartement perfect uitgevoerd. Schone werkplek, nette afwerking en een eerlijke prijs. Meer dan tevreden!',
+    text: 'Het stucwerk en schilderwerk in onze woning is uitstekend uitgevoerd. Nette werkplek, eerlijke prijs en op tijd klaar. We zijn er heel blij mee en raden Yus Klussenbedrijf zeker aan.',
   },
 ];
 

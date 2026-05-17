@@ -311,7 +311,7 @@ export const LOGO_URL =
 export const PHONE = '+31 6 21547256';
 export const PHONE_RAW = '31621547256';
 export const EMAIL = 'info@yusklussenbedrijf.nl';
-export const REGIO = 'Rotterdam en omgeving';
+export const REGIO = 'Nederland';
 export const WA_MSG = encodeURIComponent(
   'Hallo Yus Klussenbedrijf, ik heb interesse in uw diensten. Kunt u mij meer informatie geven?'
 );
