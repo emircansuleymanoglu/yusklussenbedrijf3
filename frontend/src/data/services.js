@@ -194,12 +194,13 @@ export const SERVICES = [
       'Vervanging of uitbreiding van de meterkast',
       'Eindkeuring en veiligheidsinspectie',
     ],
-    // GitHub authentic electrical work + professional Unsplash
+    // Authentic project photos: elektriciteit installatie
     images: [
-      U.electric1,   // professional: electrician at work
-      img(20),       // authentic: elektrische leidingen in muur aangelegd
-      U.electric2,   // professional: electrician at panel
-      U.electric3,   // professional: authorized installer
+      '/images/elektriciteit/elek-4.jpg',
+      '/images/elektriciteit/elek-2.jpg',
+      '/images/elektriciteit/elek-1.jpg',
+      '/images/elektriciteit/elek-5.jpg',
+      '/images/elektriciteit/elek-3.jpg',
     ],
   },
   {
