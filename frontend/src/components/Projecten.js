@@ -31,7 +31,7 @@ const PROJECTS = [
     location: 'Amsterdam',
     category: 'Schilderwerk',
     desc: 'Volledig binnenschilderwerk in moderne navy-blauwe accentkleur.',
-    image: 'https://images.unsplash.com/photo-1655665151765-98a95126ba41?crop=entropy&cs=srgb&fm=jpg&w=800&q=85',
+    image: '/images/schilderwerk/schil-7.jpg',
   },
   {
     id: 4,
@@ -80,7 +80,7 @@ const PROJECTS = [
     location: 'Utrecht',
     category: 'Schilderwerk',
     desc: 'Binnenschilderwerk met verfschilders aan het werk, professioneel en netjes.',
-    image: img(15),
+    image: '/images/schilderwerk/schil-4.jpg',
   },
 ];
 

@@ -96,12 +96,16 @@ export const SERVICES = [
       'Afplakken en beschermen van niet te schilderen delen',
       'Netjes opruimen na afronding',
     ],
-    // Mix: authentic GitHub schilderwerk photos + professional Unsplash
+    // Authentic project photos: schilderwerk
     images: [
-      U.paintRoom,       // premium: beautifully painted living room result
-      img(15),           // authentic: schilderwerk bezig in woning
-      img(25),           // authentic: vers geschilderde muren
-      U.painter1,        // professional: schilder aan het werk
+      '/images/schilderwerk/schil-7.jpg',
+      '/images/schilderwerk/schil-4.jpg',
+      '/images/schilderwerk/schil-6.png',
+      '/images/schilderwerk/schil-1.jpg',
+      '/images/schilderwerk/schil-2.jpg',
+      '/images/schilderwerk/schil-3.jpg',
+      '/images/schilderwerk/schil-5.jpg',
+      '/images/schilderwerk/schil-8.jpg',
     ],
   },
   {
