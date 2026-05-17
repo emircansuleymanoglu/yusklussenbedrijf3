@@ -51,26 +51,70 @@ $adresRij = $sAdres
     : '';
 
 $body  = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head>';
-$body .= '<body style="font-family:Arial,sans-serif;max-width:620px;margin:0 auto;padding:20px;color:#333;background:#f1f5f9">';
-$body .= '<div style="background:#0ea5e9;padding:24px 28px;border-radius:10px 10px 0 0">';
-$body .= '<h1 style="color:#fff;margin:0;font-size:20px">&#x1F4CB; Nieuwe Offerte Aanvraag</h1>';
-$body .= '<p style="color:#e0f2fe;margin:6px 0 0;font-size:13px">Yus Klussenbedrijf &mdash; ' . $sNaam . '</p>';
-$body .= '</div>';
-$body .= '<div style="background:#fff;padding:24px 28px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 10px 10px">';
-$body .= '<table style="width:100%;border-collapse:collapse">';
-$body .= '<tr style="border-bottom:1px solid #f1f5f9"><td style="padding:10px 8px;width:140px;color:#64748b;font-size:14px;vertical-align:top"><strong>Naam:</strong></td><td style="padding:10px 8px;font-size:14px">' . $sNaam . '</td></tr>';
-$body .= '<tr style="border-bottom:1px solid #f1f5f9"><td style="padding:10px 8px;color:#64748b;font-size:14px;vertical-align:top"><strong>E-mail:</strong></td><td style="padding:10px 8px;font-size:14px"><a href="mailto:' . $sEmail . '" style="color:#0ea5e9">' . $sEmail . '</a></td></tr>';
-$body .= '<tr style="border-bottom:1px solid #f1f5f9"><td style="padding:10px 8px;color:#64748b;font-size:14px;vertical-align:top"><strong>Telefoon:</strong></td><td style="padding:10px 8px;font-size:14px"><a href="tel:' . $sTelefoon . '" style="color:#0ea5e9">' . $sTelefoon . '</a></td></tr>';
-$body .= $adresRij;
-$body .= '<tr style="border-bottom:1px solid #f1f5f9"><td style="padding:10px 8px;color:#64748b;font-size:14px;vertical-align:top"><strong>Dienst:</strong></td><td style="padding:10px 8px;font-size:14px"><span style="background:#dbeafe;color:#1d4ed8;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:bold">' . $sDienst . '</span></td></tr>';
-$body .= '<tr><td colspan="2" style="padding:10px 8px"><strong style="color:#64748b;font-size:14px">Omschrijving:</strong>';
-$body .= '<div style="margin-top:8px;padding:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;font-size:14px;line-height:1.7">' . $sOmschrijving . '</div></td></tr>';
+$body .= '<body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,Helvetica,sans-serif">';
+$body .= '<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:40px 0"><tr><td align="center">';
+$body .= '<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:4px;overflow:hidden;border:1px solid #e0e0e0">';
+$body .= '<tr><td style="background:#1a1a1a;padding:24px 32px">';
+$body .= '<p style="margin:0;color:#ffffff;font-size:13px;letter-spacing:1px;text-transform:uppercase">Yus Klussenbedrijf</p>';
+$body .= '<p style="margin:6px 0 0;color:#ffffff;font-size:18px;font-weight:bold">Nieuwe offerte aanvraag</p>';
+$body .= '</td></tr>';
+$body .= '<tr><td style="padding:28px 32px 0">';
+$body .= '<p style="margin:0 0 20px;font-size:13px;color:#888888">' . $datum . '</p>';
+$body .= '<table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px">';
+$body .= '<tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#888888;width:130px">Naam</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#1a1a1a;font-weight:bold">' . $sNaam . '</td></tr>';
+$body .= '<tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#888888">E-mail</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0"><a href="mailto:' . $sEmail . '" style="color:#1a1a1a">' . $sEmail . '</a></td></tr>';
+$body .= '<tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#888888">Telefoon</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0"><a href="tel:' . $sTelefoon . '" style="color:#1a1a1a">' . $sTelefoon . '</a></td></tr>';
+if ($sAdres) {
+    $body .= '<tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#888888">Adres</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#1a1a1a">' . $sAdres . '</td></tr>';
+}
+$body .= '<tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#888888">Dienst</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#1a1a1a;font-weight:bold">' . $sDienst . '</td></tr>';
 $body .= '</table>';
-$body .= '<div style="margin-top:20px;padding:12px 16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;font-size:12px;color:#166534">';
-$body .= '&#x2705; Ontvangen op ' . $datum . '</div>';
-$body .= '</div></body></html>';
+$body .= '</td></tr>';
+$body .= '<tr><td style="padding:20px 32px 32px">';
+$body .= '<p style="margin:0 0 10px;font-size:13px;color:#888888;text-transform:uppercase;letter-spacing:0.5px">Omschrijving</p>';
+$body .= '<p style="margin:0;font-size:14px;color:#333333;line-height:1.7;border-left:3px solid #e0e0e0;padding-left:14px">' . $sOmschrijving . '</p>';
+$body .= '</td></tr>';
+$body .= '<tr><td style="background:#f9f9f9;padding:16px 32px;border-top:1px solid #e8e8e8">';
+$body .= '<p style="margin:0;font-size:12px;color:#aaaaaa">Ontvangen via yusklussenbedrijf.nl op ' . $datum . '</p>';
+$body .= '</td></tr>';
+$body .= '</table></td></tr></table></body></html>';
 
+// ── Mail aan Yus Klussenbedrijf ──────────────────────────────────────────────
 $sent = sendMail(TO_EMAIL, $subject, $body, $sEmail);
+
+// ── Bevestigingsmail aan klant ────────────────────────────────────────────────
+$klantSubject = '=?UTF-8?B?' . base64_encode('Uw aanvraag is ontvangen – Yus Klussenbedrijf') . '?=';
+$klantBody  = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head>';
+$klantBody .= '<body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,Helvetica,sans-serif">';
+$klantBody .= '<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:40px 0">';
+$klantBody .= '<tr><td align="center">';
+$klantBody .= '<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:4px;overflow:hidden;border:1px solid #e0e0e0">';
+$klantBody .= '<tr><td style="background:#1a1a1a;padding:28px 36px">';
+$klantBody .= '<p style="margin:0;color:#ffffff;font-size:20px;font-weight:bold;letter-spacing:0.5px">Yus Klussenbedrijf</p>';
+$klantBody .= '<p style="margin:4px 0 0;color:#aaaaaa;font-size:12px">yusklussenbedrijf.nl &nbsp;·&nbsp; +31 6 21547256</p>';
+$klantBody .= '</td></tr>';
+$klantBody .= '<tr><td style="padding:36px 36px 24px">';
+$klantBody .= '<p style="margin:0 0 16px;font-size:15px;color:#222222">Beste ' . $sNaam . ',</p>';
+$klantBody .= '<p style="margin:0 0 16px;font-size:15px;color:#444444;line-height:1.6">Bedankt voor uw offerte-aanvraag. We hebben uw bericht goed ontvangen en nemen binnen <strong>24 uur</strong> contact met u op.</p>';
+$klantBody .= '<p style="margin:0 0 24px;font-size:15px;color:#444444;line-height:1.6">Hieronder vindt u een samenvatting van uw aanvraag:</p>';
+$klantBody .= '<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e8e8e8;border-radius:4px;font-size:14px">';
+$klantBody .= '<tr style="background:#f9f9f9"><td style="padding:10px 16px;color:#888888;width:140px">Dienst</td><td style="padding:10px 16px;color:#222222;font-weight:bold">' . $sDienst . '</td></tr>';
+if ($sAdres) {
+    $klantBody .= '<tr><td style="padding:10px 16px;color:#888888;border-top:1px solid #f0f0f0">Adres</td><td style="padding:10px 16px;color:#222222;border-top:1px solid #f0f0f0">' . $sAdres . '</td></tr>';
+}
+$klantBody .= '<tr style="background:#f9f9f9"><td style="padding:10px 16px;color:#888888;border-top:1px solid #f0f0f0;vertical-align:top">Omschrijving</td><td style="padding:10px 16px;color:#222222;border-top:1px solid #f0f0f0;line-height:1.6">' . $sOmschrijving . '</td></tr>';
+$klantBody .= '</table>';
+$klantBody .= '</td></tr>';
+$klantBody .= '<tr><td style="padding:0 36px 36px">';
+$klantBody .= '<p style="margin:0 0 16px;font-size:15px;color:#444444;line-height:1.6">Heeft u in de tussentijd vragen? Neem gerust contact op via <a href="tel:+31621547256" style="color:#1a1a1a;font-weight:bold">+31 6 21547256</a> of reply op dit bericht.</p>';
+$klantBody .= '<p style="margin:0;font-size:15px;color:#222222">Met vriendelijke groet,<br><strong>Yus Klussenbedrijf</strong></p>';
+$klantBody .= '</td></tr>';
+$klantBody .= '<tr><td style="background:#f9f9f9;padding:16px 36px;border-top:1px solid #e8e8e8">';
+$klantBody .= '<p style="margin:0;font-size:11px;color:#aaaaaa">Dit is een automatische bevestiging. U ontvangt dit bericht omdat u een aanvraag heeft ingediend via yusklussenbedrijf.nl</p>';
+$klantBody .= '</td></tr>';
+$klantBody .= '</table></td></tr></table></body></html>';
+
+sendMail($email, $klantSubject, $klantBody);
 
 if ($sent) {
     recordSubmission(clientIp());
