@@ -6,11 +6,6 @@ import { SERVICES, LOGO_URL, PHONE, EMAIL, REGIO } from '../data/services';
 export default function Footer() {
   const navigate = useNavigate();
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const handleHomeNav = (id, e) => {
     e.preventDefault();
     navigate('/', { state: { scrollTo: id } });
