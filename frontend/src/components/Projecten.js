@@ -23,7 +23,7 @@ const PROJECTS = [
     category: 'Stucwerk',
     desc: 'Vers gepleisterde wanden en plafonds — strak, egaal en vakkundig afgewerkt.',
     // GitHub: authentic stucwerk - freshly plastered white walls (Heemskerk)
-    image: SS + 'stukwerk_schilderwerk-14.webp',
+    image: '/images/stucwerk/stuc-2.jpg',
   },
   {
     id: 3,
@@ -72,7 +72,7 @@ const PROJECTS = [
     location: 'Den Haag',
     category: 'Stucwerk',
     desc: 'Professioneel stucwerk en pleisterwerk voor strakke wanden en plafonds.',
-    image: SS + 'stukwerk_schilderwerk-08.webp',
+    image: '/images/stucwerk/stuc-4.jpg',
   },
   {
     id: 9,

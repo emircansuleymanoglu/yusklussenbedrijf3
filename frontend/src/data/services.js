@@ -64,12 +64,12 @@ export const SERVICES = [
       'Schoonmaken en nette oplevering',
       'Garantie op uitgevoerd werk',
     ],
-    // GitHub authentic project photos + stucwerk category images
+    // Authentic project photos: stucwerk installatie
     images: [
-      SS + 'stukwerk_schilderwerk-08.webp',
-      img(30),  // authentic: stucwerk voorbereiding met KNAUF bags
-      img(1),   // authentic: decoratieve wandpaneel/TV-unit (stucwerk eindresultaat)
-      SS + 'stukwerk_schilderwerk-13.webp',
+      '/images/stucwerk/stuc-1.jpg',
+      '/images/stucwerk/stuc-2.jpg',
+      '/images/stucwerk/stuc-3.jpg',
+      '/images/stucwerk/stuc-4.jpg',
     ],
   },
   {
