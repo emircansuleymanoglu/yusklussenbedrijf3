@@ -83,7 +83,6 @@ export default function Contact() {
             <div className="space-y-5 mb-10">
               {[
                 { icon: Phone, label: 'Telefoon', value: PHONE, href: `tel:${PHONE}` },
-                { icon: MessageCircle, label: 'WhatsApp', value: PHONE, href: `https://wa.me/${PHONE_RAW}?text=${WA_MSG}`, external: true },
                 { icon: Mail, label: 'E-mail', value: EMAIL, href: `mailto:${EMAIL}` },
                 { icon: MapPin, label: 'Werkgebied', value: REGIO, href: null },
               ].map(({ icon: Icon, label, value, href, external }) => (

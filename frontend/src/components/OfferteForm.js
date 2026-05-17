@@ -68,7 +68,7 @@ export default function OfferteForm({ preService }) {
         setServerError('Er is iets misgegaan. Probeer het opnieuw of bel ons.');
       }
     } catch {
-      setServerError('Geen verbinding. Bel ons op +31 6 12345678.');
+      setServerError('Geen verbinding. Bel ons op +31 6 21547256.');
     } finally {
       setLoading(false);
     }
@@ -151,7 +151,7 @@ export default function OfferteForm({ preService }) {
                   Telefoonnummer <span className="text-red-400">*</span>
                 </label>
                 <input id="telefoon" name="telefoon" type="tel" data-testid="offerte-telefoon"
-                  value={form.telefoon} onChange={handleChange} placeholder="+31 6 12345678"
+                  value={form.telefoon} onChange={handleChange} placeholder="+31 6 21547256"
                   className={`input-field ${errors.telefoon ? 'input-error' : ''}`} autoComplete="tel" />
                 {errors.telefoon && <p data-testid="error-telefoon" className="flex items-center gap-1 text-red-500 text-xs mt-1.5"><AlertCircle size={12} />{errors.telefoon}</p>}
               </div>

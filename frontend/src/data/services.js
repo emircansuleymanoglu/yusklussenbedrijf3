@@ -308,8 +308,8 @@ export const SERVICES = [
 export const LOGO_URL =
   'https://customer-assets.emergentagent.com/job_klus-preview/artifacts/mj7uc5ko_yus-logo-cropped.png';
 
-export const PHONE = '+31 6 12345678';
-export const PHONE_RAW = '31612345678';
+export const PHONE = '+31 6 21547256';
+export const PHONE_RAW = '31621547256';
 export const EMAIL = 'info@yusklussenbedrijf.nl';
 export const REGIO = 'Rotterdam en omgeving';
 export const WA_MSG = encodeURIComponent(
