@@ -33,64 +33,106 @@ validateEmailDomain($email);
 $sNaam    = sanitize($naam);
 $sEmail   = sanitize($email);
 $sBericht = nl2br(sanitize($bericht));
-$datum    = date('d-m-Y') . ' om ' . date('H:i') . ' uur';
+$datum    = date('d-m-Y \o\m H:i');
 
+// ── Interne notificatiemail ───────────────────────────────────────────────────
 $subject = '=?UTF-8?B?' . base64_encode('Nieuw contactbericht van ' . $naam) . '?=';
 
-$body  = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head>';
-$body .= '<body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,Helvetica,sans-serif">';
-$body .= '<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:40px 0"><tr><td align="center">';
-$body .= '<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:4px;overflow:hidden;border:1px solid #e0e0e0">';
-$body .= '<tr><td style="background:#1a1a1a;padding:24px 32px">';
-$body .= '<p style="margin:0;color:#ffffff;font-size:13px;letter-spacing:1px;text-transform:uppercase">Yus Klussenbedrijf</p>';
-$body .= '<p style="margin:6px 0 0;color:#ffffff;font-size:18px;font-weight:bold">Nieuw contactbericht</p>';
-$body .= '</td></tr>';
-$body .= '<tr><td style="padding:28px 32px 20px">';
-$body .= '<p style="margin:0 0 20px;font-size:13px;color:#888888">' . $datum . '</p>';
-$body .= '<table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px">';
-$body .= '<tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#888888;width:130px">Naam</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#1a1a1a;font-weight:bold">' . $sNaam . '</td></tr>';
-$body .= '<tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#888888">E-mail</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0"><a href="mailto:' . $sEmail . '" style="color:#1a1a1a">' . $sEmail . '</a></td></tr>';
-$body .= '</table>';
-$body .= '</td></tr>';
-$body .= '<tr><td style="padding:0 32px 32px">';
-$body .= '<p style="margin:0 0 10px;font-size:13px;color:#888888;text-transform:uppercase;letter-spacing:0.5px">Bericht</p>';
-$body .= '<p style="margin:0;font-size:14px;color:#333333;line-height:1.7;border-left:3px solid #e0e0e0;padding-left:14px">' . $sBericht . '</p>';
-$body .= '</td></tr>';
-$body .= '<tr><td style="background:#f9f9f9;padding:16px 32px;border-top:1px solid #e8e8e8">';
-$body .= '<p style="margin:0;font-size:12px;color:#aaaaaa">Ontvangen via yusklussenbedrijf.nl op ' . $datum . '</p>';
-$body .= '</td></tr>';
-$body .= '</table></td></tr></table></body></html>';
+$body = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f0f0f0;padding:32px 16px">
+<tr><td align="center">
+<table width="560" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;width:100%">
 
-// ── Mail aan Yus Klussenbedrijf ──────────────────────────────────────────────
+  <!-- Header -->
+  <tr><td style="background:#111111;padding:28px 36px;border-radius:6px 6px 0 0">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td><span style="color:#ffffff;font-size:17px;font-weight:700;letter-spacing:0.3px">YUS Klussenbedrijf</span></td>
+        <td align="right"><span style="color:#888888;font-size:12px">Nieuw bericht</span></td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- Body -->
+  <tr><td style="background:#ffffff;padding:32px 36px;border-left:1px solid #e4e4e4;border-right:1px solid #e4e4e4">
+
+    <p style="margin:0 0 24px;font-size:13px;color:#999999">' . $datum . '</p>
+
+    <!-- Gegevens -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;margin-bottom:28px">
+      <tr>
+        <td style="padding:11px 0;border-bottom:1px solid #f2f2f2;font-size:13px;color:#999999;width:110px;vertical-align:top">Naam</td>
+        <td style="padding:11px 0;border-bottom:1px solid #f2f2f2;font-size:14px;color:#111111;font-weight:600">' . $sNaam . '</td>
+      </tr>
+      <tr>
+        <td style="padding:11px 0;font-size:13px;color:#999999;vertical-align:top">E-mail</td>
+        <td style="padding:11px 0;font-size:14px"><a href="mailto:' . $sEmail . '" style="color:#111111;text-decoration:none">' . $sEmail . '</a></td>
+      </tr>
+    </table>
+
+    <!-- Bericht -->
+    <p style="margin:0 0 10px;font-size:12px;color:#999999;text-transform:uppercase;letter-spacing:0.8px">Bericht</p>
+    <div style="padding:16px 20px;background:#f8f8f8;border-left:3px solid #cccccc;font-size:14px;color:#333333;line-height:1.75">' . $sBericht . '</div>
+
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="background:#f8f8f8;padding:16px 36px;border:1px solid #e4e4e4;border-top:none;border-radius:0 0 6px 6px">
+    <p style="margin:0;font-size:11px;color:#bbbbbb">Ontvangen via yusklussenbedrijf.nl &nbsp;&middot;&nbsp; ' . $datum . '</p>
+  </td></tr>
+
+</table>
+</td></tr></table>
+</body></html>';
+
 $sent = sendMail(TO_EMAIL, $subject, $body, $sEmail);
 
 // ── Bevestigingsmail aan klant ────────────────────────────────────────────────
-$klantSubject = '=?UTF-8?B?' . base64_encode('Uw bericht is ontvangen – Yus Klussenbedrijf') . '?=';
-$klantBody  = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head>';
-$klantBody .= '<body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,Helvetica,sans-serif">';
-$klantBody .= '<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:40px 0">';
-$klantBody .= '<tr><td align="center">';
-$klantBody .= '<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:4px;overflow:hidden;border:1px solid #e0e0e0">';
-$klantBody .= '<tr><td style="background:#1a1a1a;padding:28px 36px">';
-$klantBody .= '<p style="margin:0;color:#ffffff;font-size:20px;font-weight:bold;letter-spacing:0.5px">Yus Klussenbedrijf</p>';
-$klantBody .= '<p style="margin:4px 0 0;color:#aaaaaa;font-size:12px">yusklussenbedrijf.nl &nbsp;·&nbsp; +31 6 21547256</p>';
-$klantBody .= '</td></tr>';
-$klantBody .= '<tr><td style="padding:36px 36px 24px">';
-$klantBody .= '<p style="margin:0 0 16px;font-size:15px;color:#222222">Beste ' . $sNaam . ',</p>';
-$klantBody .= '<p style="margin:0 0 16px;font-size:15px;color:#444444;line-height:1.6">Bedankt voor uw bericht. We hebben uw vraag goed ontvangen en nemen binnen <strong>24 uur</strong> contact met u op.</p>';
-$klantBody .= '<p style="margin:0 0 24px;font-size:15px;color:#444444;line-height:1.6">Uw bericht:</p>';
-$klantBody .= '<table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e8e8e8;border-radius:4px">';
-$klantBody .= '<tr style="background:#f9f9f9"><td style="padding:14px 16px;font-size:14px;color:#222222;line-height:1.6">' . $sBericht . '</td></tr>';
-$klantBody .= '</table>';
-$klantBody .= '</td></tr>';
-$klantBody .= '<tr><td style="padding:0 36px 36px">';
-$klantBody .= '<p style="margin:0 0 16px;font-size:15px;color:#444444;line-height:1.6">Heeft u in de tussentijd vragen? Neem gerust contact op via <a href="tel:+31621547256" style="color:#1a1a1a;font-weight:bold">+31 6 21547256</a> of reply op dit bericht.</p>';
-$klantBody .= '<p style="margin:0;font-size:15px;color:#222222">Met vriendelijke groet,<br><strong>Yus Klussenbedrijf</strong></p>';
-$klantBody .= '</td></tr>';
-$klantBody .= '<tr><td style="background:#f9f9f9;padding:16px 36px;border-top:1px solid #e8e8e8">';
-$klantBody .= '<p style="margin:0;font-size:11px;color:#aaaaaa">Dit is een automatische bevestiging. U ontvangt dit bericht omdat u contact heeft opgenomen via yusklussenbedrijf.nl</p>';
-$klantBody .= '</td></tr>';
-$klantBody .= '</table></td></tr></table></body></html>';
+$klantSubject = '=?UTF-8?B?' . base64_encode('Uw bericht is ontvangen – YUS Klussenbedrijf') . '?=';
+
+$klantBody = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f0f0f0;padding:32px 16px">
+<tr><td align="center">
+<table width="560" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;width:100%">
+
+  <!-- Header -->
+  <tr><td style="background:#111111;padding:28px 36px;border-radius:6px 6px 0 0">
+    <span style="color:#ffffff;font-size:17px;font-weight:700;letter-spacing:0.3px">YUS Klussenbedrijf</span><br>
+    <span style="color:#888888;font-size:12px;margin-top:4px;display:inline-block">yusklussenbedrijf.nl &nbsp;&middot;&nbsp; +31 6 21547256</span>
+  </td></tr>
+
+  <!-- Body -->
+  <tr><td style="background:#ffffff;padding:36px;border-left:1px solid #e4e4e4;border-right:1px solid #e4e4e4">
+
+    <p style="margin:0 0 20px;font-size:15px;color:#111111">Beste ' . $sNaam . ',</p>
+
+    <p style="margin:0 0 16px;font-size:14px;color:#444444;line-height:1.7">
+      Bedankt voor uw bericht. We hebben uw vraag goed ontvangen en nemen binnen <strong style="color:#111111">24 uur</strong> contact met u op.
+    </p>
+
+    <p style="margin:0 0 14px;font-size:13px;color:#999999;text-transform:uppercase;letter-spacing:0.8px">Uw bericht</p>
+    <div style="padding:16px 20px;background:#f8f8f8;border-left:3px solid #cccccc;font-size:14px;color:#333333;line-height:1.75;margin-bottom:28px">' . $sBericht . '</div>
+
+    <p style="margin:0 0 20px;font-size:14px;color:#444444;line-height:1.7">
+      Heeft u in de tussentijd vragen? Bel ons op
+      <a href="tel:+31621547256" style="color:#111111;font-weight:600;text-decoration:none">+31 6 21547256</a>
+      of reply op dit bericht.
+    </p>
+
+    <p style="margin:0;font-size:14px;color:#111111;line-height:1.7">Met vriendelijke groet,<br><strong>YUS Klussenbedrijf</strong></p>
+
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="background:#f8f8f8;padding:16px 36px;border:1px solid #e4e4e4;border-top:none;border-radius:0 0 6px 6px">
+    <p style="margin:0;font-size:11px;color:#bbbbbb">U ontvangt dit bericht omdat u contact heeft opgenomen via <a href="https://yusklussenbedrijf.nl" style="color:#bbbbbb">yusklussenbedrijf.nl</a></p>
+  </td></tr>
+
+</table>
+</td></tr></table>
+</body></html>';
 
 sendMail($email, $klantSubject, $klantBody);
 
