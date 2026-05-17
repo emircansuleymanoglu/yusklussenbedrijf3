@@ -59,13 +59,7 @@ $body .= '<div style="margin-top:20px;padding:12px 16px;background:#f0fdf4;borde
 $body .= '&#x2705; Ontvangen op ' . $datum . '</div>';
 $body .= '</div></body></html>';
 
-$headers  = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-$headers .= 'From: Yus Klussenbedrijf <' . FROM_EMAIL . '>' . "\r\n";
-$headers .= 'Reply-To: ' . $sEmail . "\r\n";
-$headers .= 'X-Mailer: YusKlussenbedrijf/1.0' . "\r\n";
-
-$sent = mail(TO_EMAIL, $subject, $body, $headers);
+$sent = sendMail(TO_EMAIL, $subject, $body, $sEmail);
 
 if ($sent) {
     recordSubmission(clientIp());

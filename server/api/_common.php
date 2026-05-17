@@ -1,8 +1,12 @@
 <?php
 define('SECRET_KEY',    '886424e2881d5cebbf7c64d98e48ddb18fd4a77bcb56e43cc2fda8e26401fa1a');
 define('TO_EMAIL',      'info@yusklussenbedrijf.nl');
-define('FROM_EMAIL',    'noreply@yusklussenbedrijf.nl');
+define('FROM_EMAIL',    'info@yusklussenbedrijf.nl');
 define('SITE_DOMAIN',   'yusklussenbedrijf.nl');
+define('SMTP_HOST',     'smtp.transip.email');
+define('SMTP_PORT',     465);
+define('SMTP_USER',     'info@yusklussenbedrijf.nl');
+define('SMTP_PASS',     '58Kiraz58.');
 define('RATE_DIR',      __DIR__ . '/../../tmp/rate_limits/');
 define('NONCE_DIR',     __DIR__ . '/../../tmp/nonces/');
 define('LOG_FILE',      __DIR__ . '/../../logs/blocked.log');
@@ -142,6 +146,38 @@ function validateEmailDomain(string $email): void {
 
 function sanitize(string $v): string {
     return htmlspecialchars(strip_tags(trim($v)), ENT_QUOTES, 'UTF-8');
+}
+
+function sendMail(string $toEmail, string $subject, string $htmlBody, string $replyTo = ''): bool {
+    require_once __DIR__ . '/phpmailer/Exception.php';
+    require_once __DIR__ . '/phpmailer/PHPMailer.php';
+    require_once __DIR__ . '/phpmailer/SMTP.php';
+
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host       = SMTP_HOST;
+        $mail->SMTPAuth   = true;
+        $mail->Username   = SMTP_USER;
+        $mail->Password   = SMTP_PASS;
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = SMTP_PORT;
+        $mail->CharSet    = 'UTF-8';
+
+        $mail->setFrom(FROM_EMAIL, 'Yus Klussenbedrijf');
+        $mail->addAddress($toEmail);
+        if ($replyTo) $mail->addReplyTo($replyTo);
+
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = $htmlBody;
+
+        $mail->send();
+        return true;
+    } catch (\Exception $e) {
+        error_log('PHPMailer error: ' . $mail->ErrorInfo);
+        return false;
+    }
 }
 
 function commonChecks(array $data): void {
