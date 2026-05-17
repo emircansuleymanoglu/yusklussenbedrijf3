@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, MessageCircle, Clock, Send, Loader, CheckCircle, AlertCircle } from 'lucide-react';
 import { PHONE, PHONE_RAW, EMAIL, REGIO, WA_MSG } from '../data/services';
@@ -6,11 +6,18 @@ import { PHONE, PHONE_RAW, EMAIL, REGIO, WA_MSG } from '../data/services';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export default function Contact() {
-  const [form, setForm] = useState({ naam: '', email: '', bericht: '', honeypot: '' });
+  const [form, setForm] = useState({ naam: '', email: '', bericht: '', honeypot: '', _token: '' });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState('');
+
+  useEffect(() => {
+    fetch(`${BACKEND_URL}/api/token.php`)
+      .then((r) => r.json())
+      .then((d) => { if (d.token) setForm((p) => ({ ...p, _token: d.token })); })
+      .catch(() => {});
+  }, []);
 
   const validate = () => {
     const e = {};
@@ -33,7 +40,7 @@ export default function Contact() {
     setLoading(true);
     setServerError('');
     try {
-      const res = await fetch(`${BACKEND_URL}/api/contact`, {
+      const res = await fetch(`${BACKEND_URL}/api/contact.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

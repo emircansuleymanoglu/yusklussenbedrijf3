@@ -12,7 +12,7 @@ const SERVICE_OPTIONS = [
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-const blank = { naam: '', email: '', telefoon: '', adres: '', dienst: '', omschrijving: '', honeypot: '' };
+const blank = { naam: '', email: '', telefoon: '', adres: '', dienst: '', omschrijving: '', honeypot: '', _token: '' };
 const noErr = { naam: '', email: '', telefoon: '', dienst: '', omschrijving: '' };
 
 function validate(f) {
@@ -32,6 +32,14 @@ export default function OfferteForm({ preService }) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState('');
   const location = useLocation();
+
+  // Fetch security token on mount
+  useEffect(() => {
+    fetch(`${BACKEND_URL}/api/token.php`)
+      .then((r) => r.json())
+      .then((d) => { if (d.token) setForm((p) => ({ ...p, _token: d.token })); })
+      .catch(() => {});
+  }, []);
 
   // Pre-select service when coming from a service detail page
   useEffect(() => {
@@ -55,7 +63,7 @@ export default function OfferteForm({ preService }) {
     setLoading(true);
     setServerError('');
     try {
-      const res = await fetch(`${BACKEND_URL}/api/offerte`, {
+      const res = await fetch(`${BACKEND_URL}/api/offerte.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
