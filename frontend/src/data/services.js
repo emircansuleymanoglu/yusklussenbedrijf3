@@ -160,12 +160,14 @@ export const SERVICES = [
       'Leggen van de vloer (laminaat, parket of tegels)',
       'Inregelen en testen — uitleg en handleiding',
     ],
-    // GitHub authentic floor installation + professional warm interior
+    // Authentic project photos: vloerverwarming installatie
     images: [
-      img(40),      // authentic: visgraat vloer voor/na installatie (perfect!)
-      U.floor1,     // professional: modern woonkamer met warme vloer
-      U.floor2,     // professional: lichte ruimte met vloerverwarming
-      SS + 'stukwerk_schilderwerk-16.webp',  // finished interior with floor
+      '/images/vloerverwarming/vloer-3.jpeg',
+      '/images/vloerverwarming/vloer-1.jpeg',
+      '/images/vloerverwarming/vloer-4.jpeg',
+      '/images/vloerverwarming/vloer-2.jpeg',
+      '/images/vloerverwarming/vloer-6.jpeg',
+      '/images/vloerverwarming/vloer-5.jpeg',
     ],
   },
   {

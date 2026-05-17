@@ -64,7 +64,7 @@ const PROJECTS = [
     location: 'Rotterdam',
     category: 'Vloerverwarming',
     desc: 'Visgraat parketvloer voor/na — compleet met vloerverwarming installatie.',
-    image: img(40),
+    image: '/images/vloerverwarming/vloer-3.jpeg',
   },
   {
     id: 8,
