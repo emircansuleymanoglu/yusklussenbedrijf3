@@ -18,7 +18,8 @@ export default function Hero() {
       data-testid="hero-section"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Background */}
+      {/* Background — preload via hidden img for fetchpriority */}
+      <img src={HERO_IMAGE} alt="" fetchpriority="high" className="hidden" aria-hidden="true" />
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${HERO_IMAGE})` }}
@@ -39,20 +40,20 @@ export default function Hero() {
           >
             <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full">
               <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
-              Klus- en Renovatiebedrijf Nederland
+              Betrouwbaar Klussenbedrijf in Nederland
             </span>
           </motion.div>
 
-          {/* Heading */}
+          {/* H1 — SEO geoptimaliseerd */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2 }}
             className="font-heading text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight mb-5"
           >
-            Uw woning in<br />
-            de{' '}
-            <span className="text-sky-300">beste handen</span>
+            Betrouwbaar{' '}
+            <span className="text-sky-300">klussenbedrijf</span><br />
+            voor renovatie &amp; stucwerk
           </motion.h1>
 
           {/* Subtitle */}
@@ -62,8 +63,8 @@ export default function Hero() {
             transition={{ duration: 0.65, delay: 0.35 }}
             className="text-base lg:text-lg text-white/75 leading-relaxed mb-8 max-w-xl"
           >
-            Van stucwerk en schilderwerk tot complete badkamer- en keukenrenovaties.
-            Vakmanschap van topkwaliteit, op tijd en binnen budget — door heel Nederland.
+            Van kleine klussen tot complete verbouwingen: YUS Klussenbedrijf helpt u met
+            vakwerk, duidelijke afspraken en een nette oplevering — door heel Nederland.
           </motion.p>
 
           {/* CTAs */}
@@ -78,15 +79,15 @@ export default function Hero() {
               onClick={() => scrollTo('offerte')}
               className="btn-primary text-sm px-8 py-4"
             >
-              Gratis offerte aanvragen
+              Vrijblijvende offerte aanvragen
               <ArrowRight size={17} />
             </button>
             <button
               data-testid="hero-cta-projecten"
-              onClick={() => scrollTo('projecten')}
+              onClick={() => scrollTo('diensten')}
               className="btn-outline text-sm px-8 py-4"
             >
-              Onze projecten
+              Bekijk onze diensten
             </button>
           </motion.div>
 

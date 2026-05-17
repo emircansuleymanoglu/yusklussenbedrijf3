@@ -5,6 +5,7 @@ import { ArrowLeft, CheckCircle, MessageCircle, ArrowRight, ChevronLeft, Chevron
 import { SERVICES, PHONE, PHONE_RAW } from '../data/services';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -14,7 +15,6 @@ export default function ServiceDetail() {
 
   useEffect(() => {
     if (service) {
-      document.title = `${service.title} | Yus Klussenbedrijf`;
       window.scrollTo(0, 0);
     }
   }, [service]);
@@ -39,6 +39,11 @@ export default function ServiceDetail() {
 
   return (
     <>
+      <SEO
+        title={service.seoTitle || `${service.title} | YUS Klussenbedrijf`}
+        description={service.seoDescription || service.tagline}
+        canonical={`/diensten/${service.slug}`}
+      />
       <Navbar />
       <main className="pt-20">
         {/* Breadcrumb */}
@@ -133,8 +138,10 @@ export default function ServiceDetail() {
                   <img
                     key={activeImg}
                     src={service.images[activeImg]}
-                    alt={`${service.title} - afbeelding ${activeImg + 1}`}
+                    alt={`${service.title} door YUS Klussenbedrijf – project ${activeImg + 1}`}
                     className="w-full h-full object-cover"
+                    fetchpriority={activeImg === 0 ? 'high' : undefined}
+                    loading={activeImg === 0 ? 'eager' : 'lazy'}
                   />
                   {service.images.length > 1 && (
                     <>
@@ -210,8 +217,9 @@ export default function ServiceDetail() {
                         >
                           <img
                             src={img}
-                            alt={`${service.title} ${i + 1}`}
+                            alt={`${service.title} – YUS Klussenbedrijf project ${i + 1}`}
                             className="w-full h-full object-cover"
+                            loading="lazy"
                           />
                         </button>
                       ))}

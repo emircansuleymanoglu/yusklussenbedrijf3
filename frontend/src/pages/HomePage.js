@@ -6,15 +6,17 @@ import Stats from '../components/Stats';
 import Diensten from '../components/Diensten';
 import Projecten from '../components/Projecten';
 import Testimonials from '../components/Testimonials';
+import FAQ from '../components/FAQ';
+import Werkgebied from '../components/Werkgebied';
 import OfferteForm from '../components/OfferteForm';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export default function HomePage() {
   const location = useLocation();
 
   useEffect(() => {
-    // Scroll to hash section (e.g. /#diensten from service pages)
     const hash = location.hash;
     if (hash) {
       setTimeout(() => {
@@ -22,7 +24,6 @@ export default function HomePage() {
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       }, 150);
     }
-    // Scroll to section via state (e.g. from service CTA)
     if (location.state?.scrollTo) {
       setTimeout(() => {
         const el = document.getElementById(location.state.scrollTo);
@@ -35,6 +36,11 @@ export default function HomePage() {
 
   return (
     <>
+      <SEO
+        title="YUS Klussenbedrijf | Renovatie, Stucwerk & Schilderwerk in Nederland"
+        description="YUS Klussenbedrijf – betrouwbaar klus- en renovatiebedrijf in Nederland. Stucwerk, schilderwerk, badkamer renovatie, verbouwingen, vloeren en meer. Vraag vrijblijvend een offerte aan."
+        canonical="/"
+      />
       <Navbar />
       <main>
         <Hero />
@@ -42,6 +48,8 @@ export default function HomePage() {
         <Diensten />
         <Projecten />
         <Testimonials />
+        <Werkgebied />
+        <FAQ />
         <OfferteForm preService={preService} />
         <Contact />
       </main>
