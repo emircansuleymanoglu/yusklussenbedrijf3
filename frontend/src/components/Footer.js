@@ -17,8 +17,15 @@ const IconTikTok = () => (
 );
 
 const IconWerkspot = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true">
-    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 2a8 8 0 110 16A8 8 0 0112 4zm-1 3v2H9v2h2v6h2v-6h2V9h-2V7h-2z"/>
+  <svg viewBox="0 0 100 100" width="15" height="15" aria-hidden="true" fill="none">
+    <rect width="100" height="100" rx="22" fill="#1a1033"/>
+    <circle cx="50" cy="50" r="37" fill="#3de85a"/>
+    {/* Hammer handle */}
+    <rect x="46" y="44" width="11" height="30" rx="3.5" fill="#1a1033"
+      transform="rotate(45 46 44)"/>
+    {/* Hammer head */}
+    <rect x="22" y="22" width="30" height="18" rx="4" fill="#1a1033"
+      transform="rotate(45 22 22)"/>
   </svg>
 );
 
